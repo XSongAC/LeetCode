@@ -68,6 +68,35 @@ public class LeetCodeSolutions {
 		return s.size();
 	}
 
+	// 461. Hamming Distance
+	// The problem is basically the same as counting the 1 bits in an integer.
+	// int a = 0x0005;
+	// int b = 0x0007;
+	// bitwise and
+	// 0101 & 0111=0101
+	// System.out.println("a&b = " + (a & b));
+	// bitwise OR
+	// 0101 | 0111=0111
+	// System.out.println("a|b = " + (a | b));
+	// bitwise xor
+	// 0101 ^ 0111=0010
+	// System.out.println("a^b = " + (a ^ b));
+	// bitwise Complement
+	// ~0101=1010
+	// System.out.println("~a = " + ~a);
+	// can also be combined with assignment operator to provide shorthand
+	// assignment
+	// a=a&b
+	public static int hammingDistance(int x, int y) {
+		int res = 0;
+		for (int i = 0; i < 32; i++) {
+			res += (x & 1) ^ (y & 1);
+			x = x >> 1;
+			y = y >> 1;
+		}
+		return res;
+	}
+
 	public static void main(String args[]) {
 		String J = "C";
 		String S = "aAAbBbBBC";
@@ -79,12 +108,13 @@ public class LeetCodeSolutions {
 		int ans[] = anagramMappings(A, B);
 		System.out.println("The result of LeetCode problem 760 is : ");
 		System.out.println(Arrays.toString(ans));
-		
-		
-		String[] words = {"cend","asdf","effe","wer"};
+
+		String[] words = { "cend", "asdf", "effe", "wer" };
 		int res804 = uniqueMorseRepresentations(words);
 		System.out.println("The result of LeetCode problem 804 is : " + res804);
-		
 
+		int a461 = 461;
+		int b461 = 234;
+		System.out.println("The result of LeetCode problem 461. Hamming Distance is : " + hammingDistance(a461,b461));
 	}
 }
