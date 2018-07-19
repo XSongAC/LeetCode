@@ -112,6 +112,13 @@ public class LeetCodeSolutions {
 		return A;
 
 	}
+	
+	//657. Judge Route Circle
+	public static boolean judgeCircle(String moves) {
+		
+		return false;
+        
+    }
 
 	public static void main(String args[]) {
 		String J = "C";
