@@ -97,6 +97,22 @@ public class LeetCodeSolutions {
 		return res;
 	}
 
+	// 832. Flipping an Image
+	// Time Complexity: , where N is the total number of elements in A.
+	// Space Complexity: in additional space complexity.
+	public static int[][] flipAndInvertImage(int[][] A) {
+		int C = A[0].length;
+		for (int[] row : A) {
+			for (int i = 0; i < (C + 1) / 2; i++) {
+				int temp = row[i] ^ 1;
+				row[i] = row[C - 1 - i] ^ 1;
+				row[C - 1 - i] = temp;
+			}
+		}
+		return A;
+
+	}
+
 	public static void main(String args[]) {
 		String J = "C";
 		String S = "aAAbBbBBC";
@@ -115,6 +131,26 @@ public class LeetCodeSolutions {
 
 		int a461 = 461;
 		int b461 = 234;
-		System.out.println("The result of LeetCode problem 461. Hamming Distance is : " + hammingDistance(a461,b461));
+		System.out.println("The result of LeetCode problem 461. Hamming Distance is : " + hammingDistance(a461, b461));
+
+		System.out.println("LeetCode problem 832. Flipping an Image: Case is: ");
+		int[][] case832 = { { 1, 0, 1 }, { 1, 1, 0 }, { 0, 0, 1 } };
+
+		for (int i = 0; i < case832.length; i++) {
+			for (int j = 0; j < case832[i].length; j++) {
+				System.out.print(case832[i][j] + " ");
+			}
+			System.out.println();
+		}
+		int[][] res832 = flipAndInvertImage(case832);
+		System.out.println("The result of LeetCode problem 832. Flipping an Image is : ");
+		for (int i = 0; i < res832.length; i++) {
+			for (int j = 0; j < res832[i].length; j++) {
+				System.out.print(res832[i][j] + " ");
+			}
+			System.out.println();
+		}
+
 	}
+
 }
