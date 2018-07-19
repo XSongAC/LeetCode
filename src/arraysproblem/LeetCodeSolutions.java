@@ -3,6 +3,15 @@ package arraysproblem;
 import java.util.*;
 
 public class LeetCodeSolutions {
+	public class TreeNode {
+		int val;
+		TreeNode left;
+		TreeNode right;
+
+		TreeNode(int x) {
+			val = x;
+		}
+	}
 
 	// LeetCode 771
 	public static int numJewelsInStones(String J, String S) {
@@ -112,15 +121,55 @@ public class LeetCodeSolutions {
 		return A;
 
 	}
-	
-	//657. Judge Route Circle
+
+	// 657. Judge Route Circle
 	public static boolean judgeCircle(String moves) {
-		
-		return false;
-        
-    }
+		int x = 0;
+		int y = 0;
+		for (char c : moves.toCharArray()) {
+			if (c == 'U')
+				y++;
+			else if (c == 'D')
+				y--;
+			else if (c == 'R')
+				x++;
+			else if (c == 'L')
+				x--;
+		}
+		return x == 0 && y == 0;
+
+	}
+
+	// 852. Peak Index in a Mountain Array
+	public static int peakIndexInMountainArray(int[] A) {
+		int lo = 0;
+		int hi = A.length - 2;
+		while (lo < hi) {
+			int mi = lo + (hi - lo) / 2;
+			if (A[mi] < A[mi + 1])
+				lo = mi + 1;
+			else
+				hi = mi;
+		}
+		return lo;
+	}
+
+	// 617. Merge Two Binary Trees
+	public static TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+		if (t1 == null) {
+			return t2;
+		}
+		if (t2 == null) {
+			return t1;
+		}
+		t1.val += t2.val;
+		t1.left = mergeTrees(t1.left, t2.left);
+		t1.right = mergeTrees(t1.right, t2.right);
+		return t1;
+	}
 
 	public static void main(String args[]) {
+
 		String J = "C";
 		String S = "aAAbBbBBC";
 		int res771 = numJewelsInStones(J, S);
